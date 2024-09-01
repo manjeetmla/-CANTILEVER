@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Search</title>
+</head>
+<body>
+    <form method="GET" action="{% url 'search' %}">
+        <label for="price_range">Price Range:</label>
+        <select name="price_range" id="price_range">
+            <option value="">Any</option>
+            {% for price_range in price_ranges %}
+                <option value="{{ price_range.0 }}_{{ price_range.1 }}">{{ price_range.0 }} - {{ price_range.1 }}</option>
+    {% endfor %}
+        </select>
+
+        <label for="processor">Processor:</label>
+        <select name="processor" id="processor">
+            <option value="">Any</option>
+            {% for processor in processors %}
+                <option value="{{ processor }}">{{ processor }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="ram">Ram:</label>
+        <select name="ram" id="ram">
+            <option value="">Any</option>
+            {% for ram in rams %}
+                <option value="{{ ram }}">{{ ram }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="os">Operating System:</label>
+        <select name="os" id="os">
+            <option value="">Any</option>
+            {% for os in oss %}
+                <option value="{{ os }}">{{ os }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="ssd">SSD:</label>
+        <select name="ssd" id="ssd">
+            <option value="">Any</option>
+            {% for ssd in ssds %}
+                <option value="{{ ssd }}">{{ ssd }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="display">Display:</label>
+        <select name="display" id="display">
+            <option value="">Any</option>
+            {% for display in displays %}
+                <option value="{{ display }}">{{ display }}</option>
+            {% endfor %}
+        </select>
+
+
+        <button type="submit">Search</button>
+    </form>
+    <ul>
+        {% for product in products %}
+            <li>{{ product.product_name }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

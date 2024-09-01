@@ -1,0 +1,2 @@
+images/jap-text-1.png
+images/jap-text-2.png
